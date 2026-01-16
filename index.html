@@ -1,193 +1,261 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MALLORCA - Lentes de Sol</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to bottom, #F5DEB3, #FFD700); /* Beige a dorado cálido */
-            color: #333;
-        }
-        header {
-            background-color: #000000; /* Negro */
-            color: white;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #333333; /* Negro grisáceo */
-            padding: 10px;
-        }
-        nav a {
-            color: #FFD700; /* Dorado cálido */
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: #FFA500; /* Naranja */
-        }
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-        }
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        .product {
-            background: #000000; /* Negro */
-            border-radius: 15px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-            padding: 20px;
-            text-align: center;
-            color: white;
-            transition: transform 0.3s;
-        }
-        .product:hover {
-            transform: scale(1.05);
-        }
-        .product img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-        button {
-            background-color: #FF4500; /* Rojo-naranja llamativo */
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-top: 10px;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #FF6347; /* Más claro para hover */
-        }
-        #cart {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #000000; /* Negro */
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.5);
-            max-width: 300px;
-            display: none;
-        }
-        #cart.show { display: block; }
-        footer {
-            background-color: #000000; /* Negro */
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>MALLORCA | Lentes de Sol</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lentes de sol premium. Estilo, protección y diseño inspirado en Mallorca.">
+
+  <style>
+    :root {
+      --black: #111;
+      --white: #ffffff;
+      --sand: #e6d3a3;
+      --gold: #c8a24a;
+      --gray: #f5f5f5;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+    }
+
+    header {
+      background: var(--black);
+      color: var(--white);
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      letter-spacing: 2px;
+    }
+
+    header button {
+      background: var(--sand);
+      border: none;
+      padding: 10px 16px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .hero {
+      background: linear-gradient(to right, #000000cc, #00000055),
+        url('https://images.unsplash.com/photo-1511499767150-a48a237f0083') center/cover;
+      color: var(--white);
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 42px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .hero button {
+      background: var(--gold);
+      border: none;
+      padding: 14px 28px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      border: 1px solid #ddd;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    .card span {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 15px;
+    }
+
+    .card button {
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      padding: 10px 16px;
+      cursor: pointer;
+    }
+
+    .cart {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 320px;
+      height: 100%;
+      background: var(--white);
+      border-left: 2px solid var(--black);
+      padding: 20px;
+      transition: 0.3s;
+      overflow-y: auto;
+    }
+
+    .cart.active {
+      right: 0;
+    }
+
+    .cart h3 {
+      margin-bottom: 20px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .checkout {
+      margin-top: 20px;
+      background: var(--gold);
+      border: none;
+      width: 100%;
+      padding: 12px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    footer {
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>MALLORCA</h1>
-        <p>Lentes de Sol para un Estilo Mediterráneo</p>
-    </header>
-    <nav>
-        <a href="#productos">Productos</a>
-        <a href="#carrito" onclick="toggleCart()">Carrito</a>
-        <a href="#contacto">Contacto</a>
-    </nav>
-    <div class="container">
-        <section id="productos">
-            <h2>Nuestros Lentes de Sol</h2>
-            <div class="products">
-                <div class="product">
-                    <img src="https://via.placeholder.com/250x200?text=Lentes+Clasicos" alt="Lentes Clásicos">
-                    <h3>Lentes Clásicos</h3>
-                    <p>Estilo atemporal para días soleados. $50</p>
-                    <button onclick="addToCart('Lentes Clásicos', 50)">Agregar al Carrito</button>
-                </div>
-                <div class="product">
-                    <img src="https://via.placeholder.com/250x200?text=Lentes+Deportivos" alt="Lentes Deportivos">
-                    <h3>Lentes Deportivos</h3>
-                    <p>Perfectos para aventuras. $70</p>
-                    <button onclick="addToCart('Lentes Deportivos', 70)">Agregar al Carrito</button>
-                </div>
-                <div class="product">
-                    <img src="https://via.placeholder.com/250x200?text=Lentes+Modernos" alt="Lentes Modernos">
-                    <h3>Lentes Modernos</h3>
-                    <p>Diseño urbano y elegante. $60</p>
-                    <button onclick="addToCart('Lentes Modernos', 60)">Agregar al Carrito</button>
-                </div>
-            </div>
-        </section>
+
+<header>
+  <h1>MALLORCA</h1>
+  <button onclick="toggleCart()">🛒 Carrito</button>
+</header>
+
+<section class="hero">
+  <h2>Lentes de sol premium</h2>
+  <p>Inspirados en el verano, el mar y el estilo de Mallorca</p>
+  <button onclick="scrollToProducts()">Comprar ahora</button>
+</section>
+
+<section id="products">
+  <h2 style="text-align:center; margin-bottom:40px;">Nuestros modelos</h2>
+  <div class="products">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1512314889357-e157c22f938d">
+      <h3>MALLORCA Classic</h3>
+      <p>Protección UV400 · Diseño elegante</p>
+      <span>$25.000</span>
+      <button onclick="addToCart('Mallorca Classic', 25000)">Agregar al carrito</button>
     </div>
-    <div id="cart">
-        <h3>Carrito de Compras</h3>
-        <ul id="cart-items"></ul>
-        <p>Total: $<span id="total">0</span></p>
-        <button onclick="checkout()">Comprar Ahora</button>
-        <button onclick="toggleCart()">Cerrar</button>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1516826957135-700dedea698c">
+      <h3>MALLORCA Sunset</h3>
+      <p>Estilo moderno · Lentes polarizados</p>
+      <span>$29.000</span>
+      <button onclick="addToCart('Mallorca Sunset', 29000)">Agregar al carrito</button>
     </div>
-    <footer>
-        <p>&copy; 2023 MALLORCA. Todos los derechos reservados. | Contacto: info@mallorca.com</p>
-    </footer>
 
-    <script>
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        let total = 0;
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1520975922284-4c1a8a3b40c3">
+      <h3>MALLORCA Black</h3>
+      <p>Minimal · Negro mate</p>
+      <span>$27.000</span>
+      <button onclick="addToCart('Mallorca Black', 27000)">Agregar al carrito</button>
+    </div>
+  </div>
+</section>
 
-        function addToCart(name, price) {
-            cart.push({ name, price });
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCart();
-            alert(`${name} agregado al carrito!`);
-        }
+<div class="cart" id="cart">
+  <h3>Tu carrito</h3>
+  <div id="cartItems"></div>
+  <p id="total"></p>
+  <button class="checkout">Finalizar compra</button>
+</div>
 
-        function updateCart() {
-            const cartItems = document.getElementById('cart-items');
-            cartItems.innerHTML = '';
-            total = 0;
-            cart.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = `${item.name} - $${item.price}`;
-                cartItems.appendChild(li);
-                total += item.price;
-            });
-            document.getElementById('total').textContent = total;
-        }
+<footer>
+  <p>© 2026 MALLORCA · Lentes de sol</p>
+</footer>
 
-        function toggleCart() {
-            const cartDiv = document.getElementById('cart');
-            cartDiv.classList.toggle('show');
-            updateCart();
-        }
+<script>
+  let cart = [];
+  const cartEl = document.getElementById('cart');
+  const cartItemsEl = document.getElementById('cartItems');
+  const totalEl = document.getElementById('total');
 
-        function checkout() {
-            if (cart.length === 0) {
-                alert('El carrito está vacío.');
-            } else {
-                alert(`Compra realizada por $${total}. ¡Gracias por elegir MALLORCA!`);
-                cart = [];
-                localStorage.removeItem('cart');
-                updateCart();
-            }
-        }
+  function toggleCart() {
+    cartEl.classList.toggle('active');
+  }
 
-        // Cargar carrito al inicio
-        updateCart();
-    </script>
+  function addToCart(name, price) {
+    cart.push({ name, price });
+    renderCart();
+  }
+
+  function renderCart() {
+    cartItemsEl.innerHTML = '';
+    let total = 0;
+
+    cart.forEach(item => {
+      total += item.price;
+      const div = document.createElement('div');
+      div.className = 'cart-item';
+      div.innerHTML = `<span>${item.name}</span><span>$${item.price}</span>`;
+      cartItemsEl.appendChild(div);
+    });
+
+    totalEl.innerHTML = `<strong>Total: $${total}</strong>`;
+  }
+
+  function scrollToProducts() {
+    document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
+
 </body>
 </html>
